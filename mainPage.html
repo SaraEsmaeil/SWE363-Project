@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFUPMLenders Login</title>
+    <style>
+        #header-container {
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding-top: 60px;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 400px;
+        }
+
+        #login-form, #forgot-password-form, #verification-form, #invalid-code-form, #reset-password-form, #signup-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 1rem;
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            font-size: 1rem;
+            text-align: left; /* Align labels to the left */
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 0.5rem 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            text-align: left; /* Align text inside input fields to the left */
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9rem;
+            display: none;
+            margin-bottom: 1rem;
+        }
+
+        .forgot-password, .signup-link a, .back-to-login, .resend-code {
+            color: #4a4a4a;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .forgot-password:hover, .signup-link a:hover, .back-to-login:hover, .resend-code:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #006d67;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        button:hover {
+            background-color: #005a54;
+        }
+
+        .secondary-button {
+            background-color: #f5f5f5;
+            color: #4a4a4a;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .secondary-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .signup-link {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Adjust spacing for Back to Login */
+        .back-to-login {
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="header-container">
+        <img src="swe363headerimage.png" alt="Header Image" id="header-image" class="header-image">
+    </div>
+
+    <div class="container">
+        <!-- Login Form -->
+        <div id="login-form">
+            <h1>Welcome to<br> KFUPMLenders</h1>
+            <div class="error-message" id="error-message">Please fill all the required fields correctly.</div>
+            <div class="input-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" placeholder="+966" maxlength="13" onfocus="addPrefix('phone')" oninput="validatePhoneNumber('phone')">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter the password">
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="remember-me"> Remember me
+                </label>
+                <span class="forgot-password" onclick="showForgotPassword()">Forgot your password?</span>
+            </div>
+            <button type="button" onclick="signIn()">Sign in</button>
+            <div class="signup-link">
+                <p>Don't have an account? <a href="#" onclick="showSignUp()">Sign up</a></p>
+            </div>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div id="forgot-password-form" style="display: none;">
+            <h1>Forgot Password</h1>
+            <p>Enter your phone number to reset your password</p>
+            <div class="input-group">
+                <label for="reset-phone">Phone Number</label>
+                <input type="text" id="reset-phone" placeholder="+966" maxlength="13" onfocus="addPrefix('reset-phone')" oninput="validatePhoneNumber('reset-phone')">
+            </div>
+            <button type="button" onclick="sendResetCode()">Reset Password</button>
+            <p class="back-to-login" onclick="showLogin()">Back to Login</p>
+        </div>
+
+        <!-- Verification Form -->
+        <div id="verification-form" style="display: none;">
+            <h1>Verify Your Phone Number</h1>
+            <p>Enter the verification code sent to your phone number</p>
+            <div class="input-group">
+                <label for="verification-code">Verification Code</label>
+                <input type="text" id="verification-code" placeholder="Enter code" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            </div>
+            <button type="button" onclick="verifyCode()">Verify</button>
+            <p class="resend-code" onclick="resendCode()">Resend Code</p>
+            <p class="back-to-login" onclick="showLogin()">Back to Login</p>
+        </div>
+
+        <!-- Invalid Code Form -->
+        <div id="invalid-code-form" style="display: none;">
+            <h1>Invalid Verification Code</h1>
+            <p>The verification code you entered is incorrect or has expired.</p>
+            <button type="button" onclick="tryAgain()">Try Again</button>
+            <button class="secondary-button" type="button" onclick="resendCode()">Resend Code</button>
+            <p class="back-to-login" onclick="showLogin()">Back to Login</p>
+        </div>
+
+        <!-- Reset Password Form -->
+        <div id="reset-password-form" style="display: none;">
+            <h1>Reset Password</h1>
+            <div class="input-group">
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" placeholder="New Password">
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm New Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your new password">
+            </div>
+            <button type="button" onclick="resetPassword()">Reset Password</button>
+            <p class="error-message" id="password-error"></p>
+            <p class="back-to-login" onclick="showLogin()">Back to Login</p>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="signup-form" style="display: none;">
+            <h1>Create an Account</h1>
+            <p>Join KFUPMLenders today</p>
+            <div class="error-message" id="signup-error-message">Please fill all the required fields.</div>
+            <div class="input-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" placeholder="First Name" oninput="validateName('first-name')">
+            </div>
+            <div class="input-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" placeholder="Last Name" oninput="validateName('last-name')">
+            </div>
+            <div class="input-group">
+                <label for="signup-phone">Phone Number</label>
+                <input type="text" id="signup-phone" placeholder="+966xxxxxxxxx" maxlength="13" onfocus="addPrefix('signup-phone')" oninput="validatePhoneNumber('signup-phone')">
+            </div>
+            <div class="input-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" placeholder="Create a password">
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms">
+                <label for="terms">I agree to the Terms and Conditions</label>
+            </div>
+            <button type="button" onclick="createAccount()">Create Account</button>
+            <div class="signup-link">
+                <p>Already have an account? <a href="#" onclick="showLogin()">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addPrefix(id) {
+            const phoneInput = document.getElementById(id);
+            if (!phoneInput.value.startsWith('+966')) {
+                phoneInput.value = '+966';
+            }
+        }
+
+        function validatePhoneNumber(id) {
+            const phoneInput = document.getElementById(id);
+            phoneInput.value = phoneInput.value.replace(/[^0-9+]/g, ''); // Allow only digits and "+"
+        }
+
+        function validateName(id) {
+            const nameInput = document.getElementById(id);
+            nameInput.value = nameInput.value.replace(/[^a-zA-Z]/g, ''); // Allow only letters
+        }
+
+        function signIn() {
+            const phoneInput = document.getElementById('phone');
+            const passwordInput = document.getElementById('password');
+            const errorMessage = document.getElementById('error-message');
+
+            let valid = true;
+
+            if (phoneInput.value.length !== 13) {
+                valid = false;
+            }
+            if (passwordInput.value.length < 6) {
+                valid = false;
+            }
+
+            if (!valid) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+                alert('Sign-in successful');
+            }
+        }
+
+        function showForgotPassword() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('forgot-password-form').style.display = 'block';
+            document.getElementById('header-image').src = "swe363headerimage2.png";
+        }
+
+        function sendResetCode() {
+            const resetPhoneInput = document.getElementById('reset-phone').value;
+            if (resetPhoneInput.length === 13) {
+                alert("A reset code has been sent to your phone number.");
+                showVerification();
+            } else {
+                alert("Please enter a valid phone number.");
+            }
+        }
+
+        function showVerification() {
+            document.getElementById('forgot-password-form').style.display = 'none';
+            document.getElementById('verification-form').style.display = 'block';
+        }
+
+        function resendCode() {
+            alert("A new verification code has been sent.");
+        }
+
+        function verifyCode() {
+            const verificationCode = document.getElementById('verification-code').value;
+            if (verificationCode.length === 6) {
+                alert("Verification successful!");
+                showResetPassword();
+            } else {
+                showInvalidCode();
+            }
+        }
+
+        function showInvalidCode() {
+            document.getElementById('verification-form').style.display = 'none';
+            document.getElementById('invalid-code-form').style.display = 'block';
+        }
+
+        function tryAgain() {
+            document.getElementById('invalid-code-form').style.display = 'none';
+            document.getElementById('verification-form').style.display = 'block';
+        }
+
+        function showResetPassword() {
+            document.getElementById('verification-form').style.display = 'none';
+            document.getElementById('reset-password-form').style.display = 'block';
+        }
+
+        function resetPassword() {
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const passwordError = document.getElementById('password-error');
+
+            if (newPassword === "" || confirmPassword === "") {
+                passwordError.style.display = 'block';
+                passwordError.innerText = "Please fill all the required fields.";
+            } else if (newPassword.length < 6) {
+                passwordError.style.display = 'block';
+                passwordError.innerText = "Password must contain at least 6 characters.";
+            } else if (newPassword !== confirmPassword) {
+                passwordError.style.display = 'block';
+                passwordError.innerText = "Passwords do not match.";
+            } else {
+                passwordError.style.display = 'none';
+                alert('Password reset successfully');
+                showLogin();
+            }
+        }
+
+        function showLogin() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('forgot-password-form').style.display = 'none';
+            document.getElementById('verification-form').style.display = 'none';
+            document.getElementById('invalid-code-form').style.display = 'none';
+            document.getElementById('reset-password-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('header-image').src = "swe363headerimage.png";
+            document.getElementById('error-message').style.display = 'none'; // Hide error message
+        }
+
+        function showSignUp() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('forgot-password-form').style.display = 'none';
+            document.getElementById('verification-form').style.display = 'none';
+            document.getElementById('invalid-code-form').style.display = 'none';
+            document.getElementById('reset-password-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+            document.getElementById('header-image').src = "swe363headerimage2.png";
+        }
+
+        function createAccount() {
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const phone = document.getElementById('signup-phone').value;
+            const password = document.getElementById('signup-password').value;
+            const terms = document.getElementById('terms').checked;
+            const signupErrorMessage = document.getElementById('signup-error-message');
+
+            let errorMessage = "Please fill all the required fields.";
+            let valid = true;
+
+            if (!firstName || !lastName || !phone || !password || !terms) {
+                valid = false;
+            } else if (firstName.length < 3) {
+                errorMessage = "First name must contain at least 3 letters.";
+                valid = false;
+            } else if (lastName.length < 4) {
+                errorMessage = "Last name must contain at least 4 letters.";
+                valid = false;
+            } else if (phone.length !== 13) {
+                errorMessage = "Please enter a valid phone number with 9 digits after +966.";
+                valid = false;
+            } else if (password.length < 6) {
+                errorMessage = "Password must contain at least 6 characters.";
+                valid = false;
+            }
+
+            if (!valid) {
+                signupErrorMessage.style.display = 'block';
+                signupErrorMessage.innerText = errorMessage;
+            } else {
+                signupErrorMessage.style.display = 'none';
+                alert('Account created successfully!');
+                showLogin();
+            }
+        }
+    </script>
+</body>
+</html>
