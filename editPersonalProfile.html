@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile</title>
+    <link rel="stylesheet" href="CSSFile.css">
+    <script src="PersonalJS.js"></script>
+</head>
+<body>
+    <h1>Personal Profile</h1>
+    
+    <div class="user-info-box">
+        <div class="user-info-header">
+            <img src="Frame.png" alt="User Profile" class="profile-image">
+            <h2>User Information</h2>
+            <p>Personal details and application.</p>
+            
+        </div>
+        <div id="shadow" class="user-info-row">
+            <span  class="label">Name:</span>
+            <span class="value">Aeshah Almahmoud</span>
+        </div>
+        <div class="user-info-row">
+            <span class="label">Student ID</span>
+            <span class="value">202167070</span>
+        </div>
+        <div id="shadow" class="user-info-row">
+            <span class="label">Phone number</span>
+            <span  class="value">+966 55 966 7261</span>
+        </div>        
+    </div>
+
+
+    <div class="history">
+        <div class="user-info-header">
+            <h2>Borrowing History</h2>
+            <p>Recent items borrowed</p>
+            
+        </div>
+        <div id="shadow" class="user-info-row">
+            <span  class="label">Calculus Textbook</span>
+                <span class="borrowed">Borrowed: Jan 15, 2024</span>
+                <span class="returned">Returned: Feb 1, 2024</span>
+                <span class="Round">Returned</span>
+           
+        </div>
+        <div id="shadow" class="user-info-row">
+            <span  class="label">Scientific Calculator</span>
+                <span class="borrowed">Borrowed: Mar 1, 2024</span>
+                <span class="returned">Due: Mar 15, 2024</span>
+                <span class="Round">Active</span>
+           
+        </div>
+    </div>
+    <div class="history">
+        <div class="user-info-header">
+            <h2>Setting</h2>
+            <button id="settingsButton" class="btn">Edit Profile</button>
+        </div>
+        <div class="user-info-header">
+            <span class="borrowed">Edit Profile</span>
+        </div>
+        
+    
+        
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Edit Profile</h3>
+            <img src="Frame.png" alt="User Profile" class="profile-image">
+            <form>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+
+                <input type="submit" value="Ubdate">
+            </form>
+        </div>
+    </div>
+    <div id="verifyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeVerifyModal">&times;</span>
+            <h3>Verify Your Phone Number</h3>
+            <form id="verifyForm">
+                <label for="verificationPhone">Phone Number:</label>
+                <input type="tel" id="verificationPhone" name="verificationPhone" placeholder="Enter your phone number" required>
+                <div class="timer" id="timer">1:00</div>
+                <input type="button" id="callBackButton" class="btn" value="Call Back" onclick="callBack()">
+            </form>
+        </div>
+    </div>
+    
+
+    
+   
+
+
+    
+    
+</body>
+</html>
