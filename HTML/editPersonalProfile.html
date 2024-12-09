@@ -4,102 +4,174 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Profile</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="CSSFile.css">
-    <script src="PersonalJS.js"></script>
 </head>
+
 <body>
-    <h1>Personal Profile</h1>
-    
-    <div class="user-info-box">
-        <div class="user-info-header">
-            <img src="Frame.png" alt="User Profile" class="profile-image">
-            <h2>User Information</h2>
-            <p>Personal details and application.</p>
-            
+    <!-- Header -->
+    <header class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color: rgba(25, 87, 89, 0.72);">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="home.html">
+                <img src="logo-removebg.png" alt="Logo" class="logo-img me-2" style="height: 40px;">
+                <span style="color: white;">KFUM Lenders</span>
+            </a>
+            <form class="d-flex position-relative search-container" role="search">
+                <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search">
+                <div id="suggestions" class="suggestions bg-white border"></div>
+            </form>
+            <div class="d-flex ms-auto">
+                <a href="#" class="nav-link text-light me-3"><i class="bi bi-bell"></i></a>
+                <a href="editPersonalProfile.html" class="nav-link text-light"><i class="bi bi-person-circle"></i></a>
+            </div>
         </div>
-        <div id="shadow" class="user-info-row">
-            <span  class="label">Name:</span>
-            <span class="value">Aeshah Almahmoud</span>
-        </div>
-        <div class="user-info-row">
-            <span class="label">Student ID</span>
-            <span class="value">202167070</span>
-        </div>
-        <div id="shadow" class="user-info-row">
-            <span class="label">Phone number</span>
-            <span  class="value">+966 55 966 7261</span>
-        </div>        
-    </div>
+    </header>
 
-
-    <div class="history">
-        <div class="user-info-header">
-            <h2>Borrowing History</h2>
-            <p>Recent items borrowed</p>
-            
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="Categories and items.html">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#footer">Support & Help</a></li>
+            </ul>
         </div>
-        <div id="shadow" class="user-info-row">
-            <span  class="label">Calculus Textbook</span>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-4">
+        <h1>Personal Profile</h1>
+        
+        <div class="user-info-box">
+            <div class="user-info-header">
+                <img src="Frame.png" alt="User Profile" class="profile-image">
+                <h2>User Information</h2>
+                <p>Personal details and application.</p>
+            </div>
+            <div id="shadow" class="user-info-row">
+                <span class="label">Name:</span>
+                <span class="value">Aeshah Almahmoud</span>
+            </div>
+            <div class="user-info-row">
+                <span class="label">Student ID</span>
+                <span class="value">202167070</span>
+            </div>
+            <div id="shadow" class="user-info-row">
+                <span class="label">Phone number</span>
+                <span class="value">+966 55 966 7261</span>
+            </div>        
+        </div>
+
+        <div class="history">
+            <div class="user-info-header">
+                <h2>Borrowing History</h2>
+                <p>Recent items borrowed</p>
+            </div>
+            <div id="shadow" class="user-info-row">
+                <span class="label">Calculus Textbook</span>
                 <span class="borrowed">Borrowed: Jan 15, 2024</span>
                 <span class="returned">Returned: Feb 1, 2024</span>
                 <span class="Round">Returned</span>
-           
-        </div>
-        <div id="shadow" class="user-info-row">
-            <span  class="label">Scientific Calculator</span>
+            </div>
+            <div id="shadow" class="user-info-row">
+                <span class="label">Scientific Calculator</span>
                 <span class="borrowed">Borrowed: Mar 1, 2024</span>
                 <span class="returned">Due: Mar 15, 2024</span>
                 <span class="Round">Active</span>
-           
+            </div>
+        </div>
+
+        <div class="history">
+            <div class="user-info-header">
+                <h2>Settings</h2>
+                <button id="settingsButton" class="btn btn-primary">Edit Profile</button>
+            </div>
         </div>
     </div>
-    <div class="history">
-        <div class="user-info-header">
-            <h2>Setting</h2>
-            <button id="settingsButton" class="btn">Edit Profile</button>
-        </div>
-        <div class="user-info-header">
-            <span class="borrowed">Edit Profile</span>
-        </div>
-        
-    
-        
-    </div>
+
+    <!-- Edit Profile Modal -->
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" id="closeEditModal">&times;</span> 
             <h3>Edit Profile</h3>
             <img src="Frame.png" alt="User Profile" class="profile-image">
-            <form>
+            <form id="editForm"> 
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
                 
                 <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
-
-                <input type="submit" value="Ubdate">
+    
+                <input type="submit" value="Update" class="btn btn-primary">
             </form>
         </div>
     </div>
+
+    <!-- Verify Modal -->
     <div id="verifyModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeVerifyModal">&times;</span>
             <h3>Verify Your Phone Number</h3>
             <form id="verifyForm">
-                <label for="verificationPhone">Phone Number:</label>
-                <input type="tel" id="verificationPhone" name="verificationPhone" placeholder="Enter your phone number" required>
+                <label for="verificationPhone">Phone Number Verification:</label>
+                <input type="tel" id="verificationPhone" name="verificationPhone" placeholder="Verify your phone number" required>
                 <div class="timer" id="timer">1:00</div>
-                <input type="button" id="callBackButton" class="btn" value="Call Back" onclick="callBack()">
+                
+                <input type="submit" id="verifyButton" class="btn btn-primary" value="Verify">
+                <input type="button" id="callBackButton" class="btn btn-secondary" value="Call Back" onclick="callBack()">
             </form>
         </div>
     </div>
-    
 
-    
-   
+    <!-- Invalid Code Modal -->
+    <div id="invalidCodeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeInvalidCodeModal">&times;</span>
+            <h3>Invalid Verification Code</h3>
+            <img src="Vector.png" alt="Vector img" class="Invalid-Code">
+            <p>The verification code you entered is incorrect or has expired</p>
+            <input type="button" id="tryAgainButton" class="btn btn-primary" value="Try Again">
+            <input type="button" id="resendCodeButton" class="btn btn-secondary" value="Resend Code">
+            <input type="button" id="backToEditProfileButton" class="btn btn-secondary" value="Back to Edit Profile">
+        </div>
+    </div>
 
+    <!-- Footer -->
+    <footer style="background-color: rgba(25, 87, 89, 0.30); padding: 2rem 0; font-family: Arial, sans-serif;">
+        <div style="display: flex; justify-content: center; gap: 3rem; max-width: 900px; margin: 0 auto; color: #333;">
+            <div>
+                <h4>About KFUPMLenders</h4>
+                <p style="font-size: 0.9rem; color: #666;">
+                    KFUPMLenders is a platform for KFUPM students to lend and borrow items, fostering a collaborative community.
+                </p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul style="list-style-type: none; padding: 0; font-size: 0.9rem; color: #000;">
+                    <li><a href="#" style="color: inherit; text-decoration: none;">How It Works</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">FAQs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact Us</h4>
+                <p style="font-size: 0.9rem; color: #666;">
+                    Email: <a href="mailto:support@kfupmlenders.com" style="color: #000; text-decoration: none;">support@kfupmlenders.com</a>
+                </p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #ccc; margin-top: 1rem; padding-top: 1rem; font-size: 0.8rem; color: #666; text-align: center;">
+            © 2024 KFUPMLenders. All rights reserved.
+        </div>
+    </footer>
 
-    
-    
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="PersonalJS.js"></script>
 </body>
 </html>
