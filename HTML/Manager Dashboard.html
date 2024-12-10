@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color: #456c66db; color: white;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="logo-removebg.png" alt="Logo" class="logo-img me-2">
+            </a>
+            <form class="d-flex position-relative search-container" role="search">
+                <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search" oninput="showSuggestions(this.value)">
+                <div id="suggestions" class="suggestions bg-white border"></div>
+            </form>
+            <div class="d-flex ms-auto">
+                <a href="#" class="nav-link text-dark me-3"><i class="bi bi-bell"></i></a>
+                <a href="#" class="nav-link text-dark"><i class="bi bi-person-circle"></i></a>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Support & Help</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+<div class="container my-5">
+    <h2 class="mb-4">Manager Dashboard</h2>
+
+<!-- Dashboard Summary Cards -->
+<div class="row mb-4">
+    <!-- Card 1 -->
+    <div class="col-md-4 mb-3">
+        <div class="card summary-card">
+            <div class="card-body">
+                <div class="summary-content d-flex align-items-center">
+                    <div class="icon-box" style="background-color: #456c66db; color: white; height: 60px; padding: 15px;" >
+                        <img src="/Users/aeshah.almahmoud/Downloads/svg-3.png" alt="Icon Active Listings" class="summary-icon">
+                    </div>
+                    <div>
+                        <h5 class="summary-title">Total Active Listings</h5>
+                        <h3 class="summary-number">248</h3>
+                    </div>
+                </div>
+                <button class="btn btn-link view-all-button" style="color: #5e6261;">View all</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Card 2 -->
+    <div class="col-md-4 mb-3">
+        <div class="card summary-card">
+            <div class="card-body">
+                <div class="summary-content d-flex align-items-center">
+                    <div class="icon-box" style="background-color: #456c66db; color: white; height: 60px; padding: 15px;" >
+                        <img src="/Users/aeshah.almahmoud/Downloads/svg-2.png" alt="Icon Active Listings" class="summary-icon">
+                    </div>
+                    <div>
+                        <h5 class="summary-title">Total Users</h5>
+                        <h3 class="summary-number">1,325</h3>
+                    </div>
+                </div>
+                <button class="btn btn-link view-all-button" style="color: #5e6261;">View all</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Card 3 -->
+    <div class="col-md-4 mb-3">
+        <div class="card summary-card">
+            <div class="card-body">
+                <div class="summary-content d-flex align-items-center">
+                    <div class="icon-box" style="background-color: #456c66db; color: white; height: 60px; padding: 15px;" >
+                        <img src="/Users/aeshah.almahmoud/Downloads/svg.png" alt="Icon Active Listings" class="summary-icon">
+                    </div>
+                    <div>
+                        <h5 class="summary-title">Active Loans</h5>
+                        <h3 class="summary-number">75</h3>
+                    </div>
+                </div>
+                <button class="btn btn-link view-all-button" style="color: #5e6261;" >View all</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <!-- Customer Support Section -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h5>Customer Support</h5>
+        <p class="text-muted">Recent support tickets</p>
+        <div class="support-ticket d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <img src="/Users/aeshah.almahmoud/Downloads/div-9.png" alt="Icon Message" class="support-icon mr-2">
+                <div>
+                    <p><strong>Login Issue</strong></p>
+                    <p class="text-muted">User unable to access account</p>
+                </div>
+            </div>
+            <button class="btn btn-secondary" style="background-color: #456c66db; color: white;">Open</button>
+
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Create New Announcement Form -->
+    <div class="card">
+        <div class="card-body">
+            <h5>Create New Announcement</h5>
+            <form>
+                <div class="form-group">
+                    <label for="announcementTitle">Title</label>
+                    <input type="text" id="announcementTitle" class="form-control" placeholder="Enter Title">
+                </div>
+                <div class="form-group">
+                    <label for="announcementContent">Content</label>
+                    <textarea id="announcementContent" class="form-control" rows="3" placeholder="Enter Content"></textarea>
+                </div>
+                <button type="button" class="btn btn-secondary" style="background-color: #456c66db; color: white;" onclick="postAnnouncement()">Post Announcement</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+ <!-- Footer -->
+ <footer style="background-color: #99b6b7; padding: 2rem 0; font-family: Arial, sans-serif;">
+    <div style="display: flex; justify-content: center; gap: 3rem; max-width: 900px; margin: 0 auto; text-align: left; color: #333;">
+        <!-- About Section -->
+        <div>
+            <h4>About KFUPMLenders</h4>
+            <p style="font-size: 0.9rem; color: #666;">
+                KFUPMLenders is a platform for KFUPM students to lend and borrow items, fostering a collaborative community.
+            </p>
+        </div>
+        
+        <!-- Quick Links Section -->
+        <div>
+            <h4>Quick Links</h4>
+            <ul style="list-style-type: none; padding: 0; font-size: 0.9rem; color: #000;">
+                <li><a href="#" style="color: inherit; text-decoration: none;">How It Works</a></li>
+                <li><a href="#" style="color: inherit; text-decoration: none;">Frequently Asked Questions</a></li>
+            </ul>
+        </div>
+        
+        <!-- Contact Section -->
+        <div>
+            <h4>Contact Us</h4>
+            <p style="font-size: 0.9rem; color: #666;">
+                Email: <a href="mailto:support@kfupmlenders.com" style="color: #000; text-decoration: none;">support@kfupmlenders.com</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Bottom Copyright -->
+    <div style="border-top: 1px solid #ccc; margin-top: 1rem; padding-top: 1rem; font-size: 0.8rem; color: #666; text-align: center;">
+        © 2024 KFUPMLenders. All rights reserved.
+    </div>
+</footer>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JavaScript -->
+<script src="scripts.js"></script>
+</body>
+</html>

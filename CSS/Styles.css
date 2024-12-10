@@ -1,0 +1,210 @@
+/* General Styling */
+body {
+    background-color: #e8ebe8;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+h2 {
+    color: #333;
+}
+
+/* Review Form Card */
+.review-form-card {
+    background-color: #74908C; /* Matches the greenish color in the image */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.review-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Rating Stars */
+#rating-stars {
+    font-size: 24px;
+}
+
+#rating-stars .star {
+    color: #ddd; /* Grey color for unselected stars */
+    cursor: pointer;
+}
+
+#rating-stars .star.selected,
+#rating-stars .star:hover,
+#rating-stars .star:hover ~ .star {
+    color: #FFC107; /* Gold color for selected and hovered stars */
+}
+
+/* Form Control */
+.form-control {
+    border-radius: 5px;
+}
+
+/* Submit Button */
+.btn-submit {
+    background-color: #333;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #4A4A4A; /* Dark grey on hover */
+    color: white;
+}
+
+.btn-submit:active {
+    transform: scale(0.98); /* Slight press effect */
+}
+
+/* Modal Styling */
+#openModal {
+    font-size: 16px;
+}
+
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+/* Modal Content Box */
+.modal-content {
+    background-color: #fff;
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: left;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+}
+
+/* Content Box Styling */
+.content-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+/* Announcement List Styling */
+.announcement-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.announcement-item:last-child {
+    border-bottom: none;
+}
+
+.announcement-text {
+    flex: 1;
+}
+
+.announcement-text strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.announcement-text p {
+    font-size: 14px;
+    color: #666;
+}
+
+.announcement-date {
+    white-space: nowrap;
+    padding-left: 10px;
+    background-color: #f3f4f6;
+}
+
+/* Calendar Styling */
+.availability-schedule {
+    text-align: center;
+}
+
+.calendar {
+    margin: 10px auto;
+}
+
+.calendar-month-year {
+    margin: 0 10px;
+}
+
+.calendar-nav {
+    background: none;
+    font-size: 1.2em;
+}
+
+.calendar-table th,
+.calendar-table td {
+    padding: 8px;
+    text-align: center;
+}
+
+.calendar-table th {
+    color: #888;
+}
+
+.calendar-table td {
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+/* File Upload Box */
+.upload-box {
+    border: 2px dashed #ddd;
+    text-align: center;
+    padding: 20px;
+}
+
+.upload-label img {
+    width: 30px;
+    margin-bottom: 10px;
+}
+
+/* Add Item Button */
+.btn-add-item {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add-item:hover {
+    background-color: #555;
+}
+
+/* Media Query for Mobile Screens */
+@media (max-width: 576px) {
+    .category-icon {
+        width: 30px; /* Smaller icon for mobile screens */
+    }
+}

@@ -1,0 +1,15 @@
+Index: Middleware/validationMiddleware.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\nconst { check, validationResult } = require('express-validator');\n\n// Middleware for validating user registration data\nconst validateUser = [\n  check('firstName').notEmpty().withMessage('First name is required'),\n  check('lastName').notEmpty().withMessage('Last name is required'),\n  check('phone').notEmpty().withMessage('Phone number is required').isNumeric().withMessage('Phone number must be a valid number'),\n  check('password').notEmpty().withMessage('Password is required').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),\n\n  // Handle validation result\n  (req, res, next) => {\n    const errors = validationResult(req);\n    if (!errors.isEmpty()) {\n      return res.status(400).json({ errors: errors.array() });\n    }\n    next();\n  }\n];\n\nmodule.exports = { validateUser };\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Middleware/validationMiddleware.js b/Middleware/validationMiddleware.js
+--- a/Middleware/validationMiddleware.js	(revision 05292c2633dcdbe37f96a34d531f57fc7bfb49ec)
++++ b/Middleware/validationMiddleware.js	(date 1733255271497)
+@@ -1,4 +1,3 @@
+-
+ const { check, validationResult } = require('express-validator');
+ 
+ // Middleware for validating user registration data

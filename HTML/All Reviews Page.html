@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    
+
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color: #456c66db; color: white;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="Images/logo-removebg.png" alt="Logo" class="logo-img me-2">
+            </a>
+            <form class="d-flex position-relative search-container" role="search">
+                <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search" oninput="showSuggestions(this.value)">
+                <div id="suggestions" class="suggestions bg-white border"></div>
+            </form>
+            <div class="d-flex ms-auto">
+                <a href="#" class="nav-link text-dark me-3"><i class="bi bi-bell"></i></a>
+                <a href="#" class="nav-link text-dark"><i class="bi bi-person-circle"></i></a>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Support & Help</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Reviews Section -->
+    <div class="container mt-4">
+        <h2>Reviews</h2>
+        <div class="row">
+            <!-- Review Card 1 -->
+            <div class="col-md-4">
+              <div class="card review-card" style="background-color: #456c66db; color: white;">
+                    <div class="d-flex align-items-center" >
+                        <img src="Images/img.png" alt="User" class="review-icon mr-3">
+                        <div>
+                            <h6>Jude Alharbi</h6>
+                            <p>Posted on May 15, 2024</p>
+                        </div>
+                    </div>
+                    <p>Using this platform has been a great experience. It's user-friendly and efficient. Highly recommend!</p>
+                    <img src="Images/div.png" alt="ratting">
+                </div>
+            </div>
+            <!-- Review Card 2 -->
+            <div class="col-md-4">
+              <div class="card review-card" style="background-color: #456c66db; color: white;">
+                    <div class="d-flex align-items-center">
+                        <img src="Images/img.png" alt="User" class="review-icon mr-3">
+                        <div>
+                            <h6>Sara Esmaeil</h6>
+                            <p>Posted on May 15, 2024</p>
+                        </div>
+                    </div>
+                    <p>The website is very beneficial and saves time.</p>
+                    <img src="Images/div.png" alt="ratting">
+                </div>
+            </div>
+            <!-- Review Card 3 -->
+            <div class="col-md-4">
+              <div class="card review-card" style="background-color: #456c66db; color: white;">
+                    <div class="d-flex align-items-center">
+                        <img src="Images/img.png" alt="User" class="review-icon mr-3">
+                        <div>
+                            <h6>Aeshah Almahmoud</h6>
+                            <p>Posted on May 15, 2024</p>
+                        </div>
+                    </div>
+                    <p>This month I have saved my money because of lending.</p>
+                    <img src="Images/div.png" alt="ratting">
+                </div>
+            </div>
+            <!-- Additional reviews can be added similarly -->
+        </div>
+    </div>
+    <p> </p>
+
+    <!-- Footer -->
+    <footer style="background-color: #99b6b7; padding: 2rem 0; font-family: Arial, sans-serif;">
+      <div style="display: flex; justify-content: center; gap: 3rem; max-width: 900px; margin: 0 auto; text-align: left; color: #333;">
+          <!-- About Section -->
+          <div>
+              <h4>About KFUPMLenders</h4>
+              <p style="font-size: 0.9rem; color: #666;">
+                  KFUPMLenders is a platform for KFUPM students to lend and borrow items, fostering a collaborative community.
+              </p>
+          </div>
+          
+          <!-- Quick Links Section -->
+          <div>
+              <h4>Quick Links</h4>
+              <ul style="list-style-type: none; padding: 0; font-size: 0.9rem; color: #000;">
+                  <li><a href="#" style="color: inherit; text-decoration: none;">How It Works</a></li>
+                  <li><a href="#" style="color: inherit; text-decoration: none;">Frequently Asked Questions</a></li>
+              </ul>
+          </div>
+          
+          <!-- Contact Section -->
+          <div>
+              <h4>Contact Us</h4>
+              <p style="font-size: 0.9rem; color: #666;">
+                  Email: <a href="mailto:support@kfupmlenders.com" style="color: #000; text-decoration: none;">support@kfupmlenders.com</a>
+              </p>
+          </div>
+      </div>
+      
+      <!-- Bottom Copyright -->
+      <div style="border-top: 1px solid #ccc; margin-top: 1rem; padding-top: 1rem; font-size: 0.8rem; color: #666; text-align: center;">
+          © 2024 KFUPMLenders. All rights reserved.
+      </div>
+  </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="JavaScript/scripts.js"></script>
+</body>
+</html>

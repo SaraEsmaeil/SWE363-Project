@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<style>
+/* General Styling */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background:
+    linear-gradient(to bottom, rgb(173, 216, 230), transparent), /* Light blue */
+    linear-gradient(to right, rgb(100, 149, 237), transparent); /* Cornflower blue */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Modal Background Overlay */
+#modal {    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(207, 227, 226);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 10px;
+}
+
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+/* Modal Content */
+.modal-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 2px solid #f4f4f9;
+    padding-bottom: 10px;
+}
+
+.content-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #3498db;
+}
+
+.content-box p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Announcements Section */
+.announcement {
+    margin-top: 20px;
+}
+
+.announcement-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex-wrap: wrap; /* Ensures content wraps properly on small screens */
+}
+
+.announcement-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.announcement-text strong {
+    font-size: 1rem;
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+.announcement-text p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.announcement-date {
+    font-size: 0.85rem;
+    color: #95a5a6;
+    text-align: right;
+    margin-top: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .announcement-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .announcement-date {
+        text-align: left;
+        margin-top: 10px;
+        align-self: flex-end; /* Aligns the date at the bottom */
+    }
+}
+
+@media (max-width: 480px) {
+    .modal {
+        padding: 10px;
+    }
+
+    .announcement-item {
+        padding: 10px;
+    }
+
+    .announcement-text p {
+        font-size: 0.85rem;
+    }
+
+    .announcement-date {
+        font-size: 0.75rem;
+    }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Modal</title>
+    <link rel="stylesheet" href="../CSS/Styles.css">
+</head>
+<body>
+
+
+<!-- Modal Structure -->
+<div id="modal" class="modal">
+    <div class="modal">
+        <button class="close-button" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="modal-content">
+        <h2>Notifications</h2>
+        <div class="content-box">
+            <h3>New Announcements</h3>
+            <p>Latest updates and important information</p>
+
+            <!-- Announcement List -->
+            <div class="announcement">
+                <div class="announcement-item">
+                    <div class="announcement-text">
+                        <strong>Return Due Date is Near</strong>
+                        <p>Friendly reminder: Please return "Rich Dad Poor Dad" soon to keep it available for others</p>
+                    </div>
+                    <div class="announcement-date">March 15, 2024</div>
+                </div>
+                <div class="announcement-item">
+                    <div class="announcement-text">
+                        <strong>Community Guidelines Update</strong>
+                        <p>Please review our updated community guidelines to ensure a positive experience for all users.</p>
+                    </div>
+                    <div class="announcement-date">March 10, 2024</div>
+                </div>
+                <div class="announcement-item">
+                    <div class="announcement-text">
+                        <strong>Maintenance Scheduled</strong>
+                        <p>The platform will be undergoing maintenance on March 20, 2024, from 2 AM to 4 AM.</p>
+                    </div>
+                    <div class="announcement-date">March 5, 2024</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JavaScript -->
+<script src="../JS/Notification Icon.js"></script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile</title>
+    <style>
+        /* Base (Desktop) Styles */
+        body {
+            background-color: rgba(25, 87, 89, 0.1);
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: left;
+            font-size: 30px;
+            padding-top: 30px;
+        }
+
+        .profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0;
+        }
+
+        .user-info-row, .user-info-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background-color: #ffffff;
+            border: 0.5px solid #ddd;
+            border-radius: 4px;
+            font-size: 9px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .label {
+            color: #737373;
+        }
+
+        .value {
+            color: #171717;
+        }
+
+        #shadow {
+            background-color: #fafafa;
+        }
+
+        .user-info-header p {
+            color: gray;
+        }
+        .user-info-header h2{
+            font-size: 9px;
+            color: gray;
+
+        }
+
+        .borrowed, .returned {
+            margin-left: 10px;
+            font-size: 9px;
+            color: gray;
+        }
+
+        .history {
+            margin-top: 50px;
+        }
+
+        .Round {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fafafa;
+            border-radius: 20%;
+            background-color: rgba(115, 115, 115, 0.3);
+            color: black;
+            font-weight: bold;
+            font-size: 5px;
+        }
+
+        .btn {
+            background-color: rgba(25, 87, 89, 0.72);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 9px;
+            margin-left: 10px;
+        }
+
+        .btn:hover {
+            background-color: rgba(25, 87, 89, 0.85);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 5px;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        input[type="text"],
+        input[type="tel"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 15px;
+            background-color: rgba(25, 87, 89, 0.72);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgba(25, 87, 89, 0.85);
+        }
+
+        .timer {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .file-upload-wrapper label {
+            color: #737373;
+            font-size: 9px;
+            margin-right: auto;
+        }
+
+        #submitButton {
+            background-color: rgba(25, 87, 89, 0.72);
+            margin-left: auto;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .header, .content, .footer {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 24px;
+                text-align: center;
+                padding-top: 15px;
+            }
+
+            .container {
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            .user-info-row, .user-info-header {
+                flex-direction: column;
+                font-size: 12px;
+            }
+
+            .btn {
+                font-size: 12px;
+                margin: 5px 0;
+            }
+
+            .modal-content {
+                width: 90%;
+            }
+
+            .file-upload-wrapper label {
+                font-size: 12px;
+                margin-right: 0;
+            }
+
+            #submitButton {
+                margin-left: 0;
+                width: 100%;
+            }
+            .search-container {
+                flex-grow: 1;
+                margin-right: 20px;
+            }
+
+            .suggestions {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                max-height: 200px;
+                overflow-y: auto;
+                display: none;
+                z-index: 1000;
+            }
+
+            .suggestions div {
+                padding: 8px;
+                cursor: pointer;
+            }
+
+            .suggestions div:hover {
+                background-color: #f0f0f0;
+            }
+
+            .nav-link .bi {
+                font-size: 1.5rem;
+            }
+
+            .navbar{
+                background-color: #1D8D84;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+<h1>Personal Profile</h1>
+
+<div class="user-info-box">
+    <div class="user-info-header">
+        <img src="Images/Frame.png" alt="User Profile" class="profile-image">
+        <h2>User Information</h2>
+        <p>Personal details and application.</p>
+
+    </div>
+    <div class="shadow user-info-row">
+        <span  class="label">Name:</span>
+        <span class="value">Aeshah Almahmoud</span>
+    </div>
+    <div class="user-info-row">
+        <span class="label">Student ID</span>
+        <span class="value">202167070</span>
+    </div>
+    <div class="shadow user-info-row">
+        <span class="label">Phone number</span>
+        <span  class="value">+966 55 966 7261</span>
+    </div>
+</div>
+
+
+<div class="history">
+    <div class="user-info-header">
+        <h2>Borrowing History</h2>
+        <p>Recent items borrowed</p>
+
+    </div>
+    <div class="shadow user-info-row">
+        <span  class="label">Calculus Textbook</span>
+        <span class="borrowed">Borrowed: Jan 15, 2024</span>
+        <span class="returned">Returned: Feb 1, 2024</span>
+        <span class="Round">Returned</span>
+
+    </div>
+    <div class="shadow user-info-row">
+        <span  class="label">Scientific Calculator</span>
+        <span class="borrowed">Borrowed: Mar 1, 2024</span>
+        <span class="returned">Due: Mar 15, 2024</span>
+        <span class="Round">Active</span>
+
+    </div>
+</div>
+<div class="history">
+    <div class="user-info-header">
+        <h2>Setting</h2>
+        <button id="settingsButton" class="btn">Edit Profile</button>
+    </div>
+    <div class="user-info-header">
+        <span class="borrowed">Edit Profile</span>
+    </div>
+
+
+
+</div>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Edit Profile</h3>
+        <img src="../Images/Frame.png" alt="User Profile" class="profile-image">
+        <form>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+
+            <input type="submit" value="Ubdate">
+        </form>
+    </div>
+</div>
+<div id="verifyModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeVerifyModal">&times;</span>
+        <h3>Verify Your Phone Number</h3>
+        <form id="verifyForm">
+            <label for="verificationPhone">Phone Number:</label>
+            <input type="tel" id="verificationPhone" name="verificationPhone" placeholder="Enter your phone number" required>
+            <div class="timer" id="timer">1:00</div>
+            <input type="button" id="callBackButton" class="btn" value="Call Back" onclick="callBack()">
+        </form>
+    </div>
+</div>
+</body>
+</html>

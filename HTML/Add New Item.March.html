@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Item</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color: #456c66db; color: white;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="Images/logo-removebg.png" alt="Logo" class="logo-img me-2">
+            </a>
+            <form class="d-flex position-relative search-container" role="search">
+                <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search" oninput="showSuggestions(this.value)">
+                <div id="suggestions" class="suggestions bg-white border"></div>
+            </form>
+            <div class="d-flex ms-auto">
+                <a href="#" class="nav-link text-dark me-3"><i class="bi bi-bell"></i></a>
+                <a href="#" class="nav-link text-dark"><i class="bi bi-person-circle"></i></a>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Support & Help</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+<div class="container mt-5">
+    <h2 class="mb-4">Add New Item</h2>
+
+    <div class="card p-4">
+        <!-- Availability Schedule Calendar -->
+        <div class="availability-schedule mb-4">
+            <h5>Availability Schedule</h5>
+            <div class="calendar">
+                <button class="calendar-nav">&lt;</button>
+                <span class="calendar-month-year">March 2024</span>
+                <button class="calendar-nav">&gt;</button>
+                <table class="table calendar-table">
+                    <thead>
+                        <img src="Images/div-8.png" alt="claender" width="1000">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Form Fields -->
+        <div class="form-group">
+            <label for="itemName">Item Name</label>
+            <input type="text" id="itemName" class="form-control" placeholder="Enter item name ...">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" id="description" class="form-control" placeholder="Enter item description ...">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="category">Category</label>
+                <select id="category" class="form-control">
+                    <option selected>Select Category</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="condition">Condition</label>
+                <select id="condition" class="form-control">
+                    <option selected>Select Condition</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Image Upload Section -->
+<div class="form-group">
+    <label for="upload-image">Upload Image</label>
+    <div class="upload-box">
+        <input type="file" id="upload-image" accept="image/png, image/jpeg, image/gif">
+        <img src="Images/div-6.png" alt="file icon" class="upload-icon">
+    </div>
+
+        <!-- Add Item Button -->
+        <div class="text-right">
+            <button class="btn btn-secondary" style="background-color: #456c66db; color: white;">Add Item</button>
+        </div>
+    </div>
+</div>
+<footer style="background-color: #99b6b7; padding: 2rem 0; font-family: Arial, sans-serif;">
+    <div style="display: flex; justify-content: center; gap: 3rem; max-width: 900px; margin: 0 auto; text-align: left; color: #333;">
+        <!-- About Section -->
+        <div>
+            <h4>About KFUPMLenders</h4>
+            <p style="font-size: 0.9rem; color: #666;">
+                KFUPMLenders is a platform for KFUPM students to lend and borrow items, fostering a collaborative community.
+            </p>
+        </div>
+        
+        <!-- Quick Links Section -->
+        <div>
+            <h4>Quick Links</h4>
+            <ul style="list-style-type: none; padding: 0; font-size: 0.9rem; color: #000;">
+                <li><a href="#" style="color: inherit; text-decoration: none;">How It Works</a></li>
+                <li><a href="#" style="color: inherit; text-decoration: none;">Frequently Asked Questions</a></li>
+            </ul>
+        </div>
+        
+        <!-- Contact Section -->
+        <div>
+            <h4>Contact Us</h4>
+            <p style="font-size: 0.9rem; color: #666;">
+                Email: <a href="mailto:support@kfupmlenders.com" style="color: #000; text-decoration: none;">support@kfupmlenders.com</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Bottom Copyright -->
+    <div style="border-top: 1px solid #ccc; margin-top: 1rem; padding-top: 1rem; font-size: 0.8rem; color: #666; text-align: center;">
+        © 2024 KFUPMLenders. All rights reserved.
+    </div>
+</footer>
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JavaScript -->
+<script src="JavaScript/scripts.js"></script>
+</body>
+</html>

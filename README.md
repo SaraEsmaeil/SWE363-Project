@@ -63,3 +63,18 @@ The Add Item page enables users to add items they want to lend. The page include
 	•	Items Section: Dynamically loads items within a selected category by clicking on a category card.
 	•	Reviews Section: Showcase user reviews to build trust and credibility.
 	•	Footer: Provides information about the platform, quick links, and contact details.
+
+Overview
+This repository contains a web application, KFUPMLeanders, with multiple pages using HTML, CSS, and JavaScript that have been distributed among our team. The purpose of the ALL PAGES 2.zip is to show some of the application's functionality. For example, rating item, manager dashboard and categories manager view.
+
+Setup Instructions
+1.	Open the project, for example: rating item, in code editor ( I have used VSCode ) / browser. 
+2.	Make sure that HTML, CSS, and JavaScript files are exist.
+3.	Ensure that you download the images inside the Images folder in your computer then please place the path for each image to the appropriate location. 
+4.	Run the application. 
+
+Project Structure
+The project is organized into feature specific folders, with each folder containing the essential files needed for its functionality, (HTML, CSS, and JavaScript). These folders represent individual features like notifications icon, ratings item, and active listings, making the project modular and easier to evaluate. The Images folder serves as a shared resource, containing all the images used across the webpages.
+
+Usage Guidelines
+As I mentioned above for preparing the images, ensure that the Images folder is downloaded. P.S I understand the above approach of placing the paths is not the most practical. I have searched for a better one and found it but unfortunately, I ran out of time to fully implement it across the project, I apologize.
