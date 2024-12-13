@@ -1,0 +1,49 @@
+Setup Instructions
+Step 1: Check Prerequisites
+•	Ensure you have the necessary tools installed, such as:
+o	A version of Node.js.
+o	A MongoDB database.
+o	Git to manage the repository.
+
+Step 2: Clone the Repository
+•	Download a copy of the repository from the GitHub and clone the repository in the terminal:
+git clone https://github.com/SaraEsmaeil/SWE363-Project.git
+•	Navigate to the downloaded folder on your local device.
+
+Step 3: Install Dependencies
+•	Install all required libraries and dependencies that the project needs to run.
+You may use npm install
+
+Step 4: Configure Environment Variables
+•	Use the configuration file (.env) in GitHub 
+
+Step 5: Start the Project
+•	Launch the application using the instruction ( node server.js)
+
+API Documentation
+Overview
+The API provides endpoints for user authentication, resource management, and additional features. All requests and responses are in JSON format.
+Endpoints
+•	Authentication: For login and registration, typically returning a secure token.
+•	Resource Management: CRUD operations for items, users, or other entities.
+•	Additional Features: Specialized endpoints for specific app functionalities.
+Authentication
+•	Secure endpoints require a token sent.
+Error Handling
+•	Errors follow a consistent format with a message describing the issue.
+
+Backend Structure and Workflows
+Project Structure
+The project is organized into feature specific folders, each containing the essential files needed for its functionality, such as HTML, CSS, and JavaScript. These folders represent individual features making the project modular and easier to evaluate. 
+Backend Components
+•	Controllers: Handle HTTP requests and contain the business logic for each endpoint.
+•	Models: Define the data schemas and interact with the database.
+•	Routes: Map HTTP endpoints to their corresponding controllers.
+•	Middleware: Include functions for authentication, logging, and error handling.
+Workflows Beginning
+•	Authentication Flow:
+o	Users log in using their phone number and password.
+•	Error Handling:
+o	Centralized error handling middleware captures and processes errors.
+•	Database Interactions:
+o	The application uses MongoDB as its database.
